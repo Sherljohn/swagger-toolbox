@@ -65,7 +65,8 @@ function buildSwaggerJSON(data) {
     var typeData = typeOf(value);
     if (["array", "object", "null"].indexOf(typeData) === -1) {
       op.properties[x] = {
-        type: typeData
+        type: typeData,
+        description: ""
       };
       if (showExample === true) op.properties[x].example = value;
     } else {
@@ -84,6 +85,7 @@ function buildSwaggerJSON(data) {
               type: "array",
               items: {
                 type: typeData,
+                description: "",
                 properties: buildSwaggerJSON(data[x][0]).properties
               }
             };
